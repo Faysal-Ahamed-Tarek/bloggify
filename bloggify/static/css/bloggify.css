@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap');
+
+body {
+  font-family: "Maven Pro", sans-serif !important;
+  background: #f8fafc;
+  padding-top: 80px;
+}
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.3px;
+  color: #0f172a !important;
+}
+.navbar-brand i {
+  color: #3b82f6;
+  margin-right: 6px;
+}
+.nav-link {
+  font-weight: 500;
+  color: #334155 !important;
+  margin: 0 0.25rem;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.nav-link:hover {
+  color: #3b82f6 !important;
+}
+
+.nav-link.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+.search-form {
+  margin-right: 0.75rem;
+}
+.search-input-group {
+  background: #f1f5f9;
+  border-radius: 60px;
+  overflow: hidden;
+  transition: all 0.2s;
+  border: 1px solid #e2e8f0;
+}
+.search-input-group:focus-within {
+  background: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+.search-input {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  width: 180px;
+  outline: none;
+}
+.search-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  padding: 0 1rem;
+  transition: color 0.2s;
+}
+.search-btn:hover {
+  color: #3b82f6;
+}
+
+.btn-login {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 0.35rem 1.2rem;
+  transition: all 0.2s;
+  margin-right: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-login:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+.btn-signup {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 0.35rem 1.3rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-signup:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+.navbar-toggler {
+  border: none;
+  color: #0f172a;
+  font-size: 1.5rem;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 991.98px) {
+  .search-input-group {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .search-input {
+    width: 100%;
+  }
+  .navbar-nav {
+    margin: 0.5rem 0;
+  }
+  .d-flex-buttons {
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+  }
+  body {
+    padding-top: 70px;
+  }
+}
+
+.nav-custom-container {
+  padding: 0 0.5rem;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.card-blog {
+  border: none;
+  border-radius: 1.2rem;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  background: white;
+}
+.card-blog:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+}
+footer {
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+
+.nav-link[href=""] {
+  cursor: pointer;
+}
