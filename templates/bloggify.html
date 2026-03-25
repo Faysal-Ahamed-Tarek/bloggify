@@ -1,129 +1,116 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django Blog - Bootstrap Navbar</title>
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome 6  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/bloggify.css' %}">
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container nav-custom-container">
-        <!--  Logo -->
-        <a class="navbar-brand" href="">
-            <i class="fab fa-python"></i> bloggify
-        </a>
+    <link rel="stylesheet" href="{% static 'css/bloggify.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container nav-custom-container">
+        <!-- Logo -->
+        <a class="navbar-brand" href=""><i class="fab fa-python"></i> bloggify</a>
 
         <!-- Toggler button for mobile (collapses) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent" aria-controls="navbarMainContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent" aria-controls="navbarMainContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
         <!-- Main navbar content: collapsible part -->
         <div class="collapse navbar-collapse" id="navbarMainContent">
-            <!-- Left navigation items (Home, Features, Pricing, FAQs, About) -->
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">FAQs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
-                </li>
-            </ul>
+          <!-- Left navigation items (Home, Features, Pricing, FAQs, About) -->
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Blog Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">FAQs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">About</a>
+            </li>
+          </ul>
 
-            <!-- Search + Login/Signup -->
-            <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
-                <!-- Search form (GET method, no action URL) -->
-                <form class="search-form d-flex" role="search" method="get" action="">
-                    <div class="search-input-group d-flex align-items-center">
-                        <input class="search-input" type="search" name="q" placeholder="Search..." aria-label="Search">
-                        <button class="search-btn" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </form>
-                
-                <!-- Buttons group: Login & Sign-up (href="") -->
-                <div class="d-flex gap-2">
-                    <a href="" class="btn btn-login">
-                        <i class="fas fa-sign-in-alt me-1"></i> Login
-                    </a>
-                    <a href="" class="btn btn-signup">
-                        <i class="fas fa-user-plus me-1"></i> Sign-up
-                    </a>
-                </div>
+          <!-- Search + Login/Signup -->
+          <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
+            <!-- Search form (GET method, no action URL) -->
+            <form class="search-form d-flex" role="search" method="get" action="">
+              <div class="search-input-group d-flex align-items-center">
+                <input class="search-input" type="search" name="q" placeholder="Search..." aria-label="Search" />
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+
+            <!-- Buttons group: Login & Sign-up (href="") -->
+            <div class="d-flex gap-2">
+              <a href="" class="btn btn-login"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+              <a href="" class="btn btn-signup"><i class="fas fa-user-plus me-1"></i> Sign-up</a>
             </div>
+          </div>
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<main class="container">
-    <div class="hero-section mb-5">
-        <h1 class="display-5 fw-bold" style="color: #0f172a;">Welcome to DjangoBlog</h1>
-        <p class="lead text-secondary">Share your stories, insights, and tutorials with the world.</p>
+    <main class="container">
+      <div class="hero-section mb-5">
+        <h1 class="display-5 fw-bold text-capitalize" style="color: #0f172a;">Human stories & ideas</h1>
+        <p class="lead text-secondary">A place to read, write, and deepen your understanding</p>
         <a href="" class="btn btn-primary rounded-pill px-4 py-2 mt-2">Start Reading <i class="fas fa-arrow-right ms-1"></i></a>
-    </div>
+      </div>
 
-    <div class="row g-4">
+      <div class="row g-4">
         <div class="col-md-4">
-            <div class="card card-blog h-100 p-3">
-                <div class="card-body">
-                    <span class="badge bg-primary bg-opacity-10 text-primary mb-2">Technology</span>
-                    <h5 class="card-title fw-semibold">Mastering Django Models</h5>
-                    <p class="card-text text-secondary">Learn how to design scalable database schemas with Django ORM, relationships and migrations.</p>
-                    <a href="" class="text-decoration-none fw-medium">Read more →</a>
-                </div>
+          <div class="card card-blog h-100 p-3">
+            <div class="card-body">
+              <span class="badge bg-primary bg-opacity-10 text-primary mb-2">Technology</span>
+              <h5 class="card-title fw-semibold">Mastering Django Models</h5>
+              <p class="card-text text-secondary">Learn how to design scalable database schemas with Django ORM, relationships and migrations.</p>
+              <a href="" class="text-decoration-none fw-medium">Read more →</a>
             </div>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-blog h-100 p-3">
-                <div class="card-body">
-                    <span class="badge bg-info bg-opacity-10 text-info mb-2">Tips</span>
-                    <h5 class="card-title fw-semibold">Bootstrap & Django Integration</h5>
-                    <p class="card-text text-secondary">Responsive design made easy. Combine Bootstrap 5 with Django templates for rapid UI development.</p>
-                    <a href="" class="text-decoration-none fw-medium">Read more →</a>
-                </div>
+          <div class="card card-blog h-100 p-3">
+            <div class="card-body">
+              <span class="badge bg-info bg-opacity-10 text-info mb-2">Tips</span>
+              <h5 class="card-title fw-semibold">Bootstrap & Django Integration</h5>
+              <p class="card-text text-secondary">Responsive design made easy. Combine Bootstrap 5 with Django templates for rapid UI development.</p>
+              <a href="" class="text-decoration-none fw-medium">Read more →</a>
             </div>
+          </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-blog h-100 p-3">
-                <div class="card-body">
-                    <span class="badge bg-warning bg-opacity-10 text-warning mb-2">Community</span>
-                    <h5 class="card-title fw-semibold">Open Source Contributions</h5>
-                    <p class="card-text text-secondary">How to get started contributing to Django packages and building your developer profile.</p>
-                    <a href="" class="text-decoration-none fw-medium">Read more →</a>
-                </div>
+          <div class="card card-blog h-100 p-3">
+            <div class="card-body">
+              <span class="badge bg-warning bg-opacity-10 text-warning mb-2">Community</span>
+              <h5 class="card-title fw-semibold">Open Source Contributions</h5>
+              <p class="card-text text-secondary">How to get started contributing to Django packages and building your developer profile.</p>
+              <a href="" class="text-decoration-none fw-medium">Read more →</a>
             </div>
+          </div>
         </div>
-    </div>
-</main>
+      </div>
+    </main>
 
-<footer class="py-4 mt-5">
-    <div class="container text-center text-secondary small">
+    <footer class="py-4 mt-5">
+      <div class="container text-center text-secondary small">
         <span>© 2026 DjangoBlog — Powered by Django & Bootstrap 5</span>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<!-- Bootstrap JS Bundle (Popper included) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
+    <!-- Bootstrap JS Bundle (Popper included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
