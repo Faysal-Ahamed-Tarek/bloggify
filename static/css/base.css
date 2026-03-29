@@ -166,3 +166,18 @@ a.dropdown-item:hover {
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
+
+.text_main { 
+  color :  #3b82f6 !important;
+}
+
+.bg_main {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.img_badge span {
+    position: absolute;
+    top: 9% !important;
+    left: 10% !important;
+}

@@ -86,6 +86,11 @@ class BlogPost(models.Model) :
             BlogPost.objects.filter(id=self.id).update(views=models.F('views') + 1)
             request.session[session_key] = True
     
-
+    def min_reading_time(self) -> int :
+        words = self.content.split()
+        word_count = len(words)
+        reading_time = word_count // 100
+        return max(reading_time, 1)
+    
     def __str__(self) -> str :
         return self.title

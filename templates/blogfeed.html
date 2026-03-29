@@ -15,47 +15,46 @@
     <div class="category-row-outer position-relative my-4">
       <button class="row-nav left-nav" aria-label="Scroll left">‹</button>
       <div id="categoryRow" class="category-row">
-          {% for category in categories %}
-            <div class="category-item">{{ category.name }}</div>
-          {% endfor %}
+        {% for category in categories %}
+          <div class="category-item">{{ category.name }}</div>
+        {% endfor %}
       </div>
       <button class="row-nav right-nav" aria-label="Scroll right">›</button>
     </div>
 
-    <!-- content area + side bar : left 60% , right 40%  -->
+    <!-- content area + side bar : left 60% , right 40% -->
     <div class="row my-4">
       <div class="col-12 col-md-8">
         <!-- Blog archive list -->
         <div class="list-group">
-            {% for post in posts %}
-              <article class="list-group-item p-3 mb-3">
-                <div class="row g-2 align-items-center">
-                  <div class="col-4 col-sm-3">
-                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid rounded" />
+          {% for post in posts %}
+            <article class="list-group-item p-3 mb-3 position-relative">
+              <div class="row g-2 align-items-center">
+                <div class="col-4 col-sm-3">
+                  <img src="/media/{{post.featured_image }}" alt="{{ post.title }}" class="img-fluid rounded" />
+                </div>
+                <div class="col-8 col-sm-9">
+                  <div class="mb-1">
+                    <span class="badge bg-primary bg-opacity-10 text-primary">{{ post.category.name }}</span>
                   </div>
-                  <div class="col-8 col-sm-9">
-                    <div class="mb-1">
-                        <span class="badge bg-primary bg-opacity-10 text-primary">{{ post.category.name }}</span>
-                    </div>
-                    <h5 class="mb-1">{{ post.title }}</h5>
-                    <p class="mb-1 text-secondary">{{ post.excerpt }}</p>
-                    <div class="d-flex gap-3">
-                      <span>by : {{ post.author.username }}</span>
-                      <span>{{ post.created_at|date:"M d" }}</span>
-                      <span>{{ post.views }} views</span>
-                      <span>0 comments</span>
-                    </div>
+                  <h4 class="mb-1">{{ post.title }}</h4>
+                  <p class="mb-1 text-secondary">{{ post.excerpt }}</p>
+                  <div class="d-flex gap-4">
+                    <span> <i class="fa-regular fa-user"></i>  {{ post.author.username }}</span>
+                    <span><i class="fa-regular fa-calendar"></i> {{ post.created_at | timesince }} ago </span>
+                    <span><i class="fa-regular fa-eye"></i> {{ post.views }} views</span>
+                    <span><i class="fa-regular fa-comment"></i> 0 comments</span>
                   </div>
                 </div>
-              </article>
-            {% endfor %}
+              </div>
+              <a href="/@{{ post.author.username }}/{{ post.slug }}" class="stretched-link" aria-label="Read {{ post.title }}"></a>
+            </article>
+          {% endfor %}
         </div>
       </div>
 
       <div class="col-12 col-md-4">
-        <div class="p-3 border rounded text-center">
-          right sidebar (ads, popular posts, etc)
-        </div>
+        <div class="p-3 border rounded text-center">right sidebar (ads, popular posts, etc)</div>
       </div>
     </div>
   </main>

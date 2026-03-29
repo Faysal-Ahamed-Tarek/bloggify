@@ -1,0 +1,75 @@
+{% comment %} {% extends "base.html" %}
+
+{% block title %}Page Not Found — 404{% endblock %}
+
+{% block custom_css %}
+<style>
+	.error-hero {
+		min-height: calc(100vh - 120px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4rem 1rem;
+		background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #fff 100%);
+	}
+	.error-card {
+		background: rgba(255,255,255,0.85);
+		border-radius: .75rem;
+		box-shadow: 0 10px 30px rgba(20,20,50,0.08);
+		padding: 2rem;
+	}
+	.error-code {
+		font-size: 6.5rem;
+		line-height: 1;
+		font-weight: 800;
+		letter-spacing: -6px;
+		color: #0d6efd;
+	}
+	.error-illustration svg { max-width: 320px; height: auto; }
+	@media (max-width: 767px) {
+		.error-code { font-size: 4.5rem; }
+		.error-illustration svg { max-width: 220px; }
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="error-hero">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="error-card d-flex flex-column flex-lg-row align-items-center gap-4">
+					<div class="text-center text-lg-start flex-grow-1">
+						<div class="error-code">404</div>
+						<h2 class="h4 mt-2 mb-2">Sorry — we couldn't find that page.</h2>
+						<p class="text-muted mb-4">The page you were looking for doesn't exist, has been moved, or is temporarily unavailable.</p>
+						<div class="d-flex gap-2 justify-content-center justify-content-lg-start">
+							<a href="/" class="btn btn-primary btn-lg"><i class="fas fa-home me-2"></i>Back to Home</a>
+							<a href="javascript:history.back()" class="btn btn-outline-secondary btn-lg">Go Back</a>
+						</div>
+					</div>
+
+					<div class="error-illustration d-none d-lg-block">
+						<!-- Inline friendly SVG illustration (no external assets needed) -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="404 illustration">
+							<defs>
+								<linearGradient id="g" x1="0" x2="1">
+									<stop offset="0%" stop-color="#c7d2fe" />
+									<stop offset="100%" stop-color="#e9f0ff" />
+								</linearGradient>
+							</defs>
+							<rect x="0" y="0" width="600" height="400" rx="20" fill="url(#g)" />
+							<g transform="translate(120,80)">
+								<circle cx="160" cy="80" r="68" fill="#fff" stroke="#dbeafe" stroke-width="6" />
+								<path d="M120 150c22-24 64-26 90 0" fill="none" stroke="#93c5fd" stroke-width="8" stroke-linecap="round" />
+								<rect x="20" y="18" width="120" height="80" rx="12" fill="#fff" stroke="#dbeafe" stroke-width="6" />
+								<text x="36" y="68" font-family="Segoe UI, Roboto, Arial" font-size="28" fill="#0f172a">Oops!</text>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %} {% endcomment %}
