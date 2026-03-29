@@ -7,7 +7,7 @@ class BlogPostAdmin(admin.ModelAdmin) :
     list_display = ("title", "category", "status", "created_at", "is_feature")
     search_fields = ("title", "content", "status", "category__name")
     list_editable = ("status", "is_feature")
-    list_filter = ("status", "is_feature", "category")
+    # list_filter = ("status", "is_feature", "category")
 
 class CategoryAdmin(admin.ModelAdmin) : 
     prepopulated_fields = {"slug": ("name",)}
