@@ -6,12 +6,13 @@
 {% endblock %}
 
 {% block custom_css %}
-
+  <link rel="stylesheet" href="{% static 'css/search.css' %}" />
 {% endblock %}
 
 {% block content %}
   <main class="container mt-5">
     {% if blog_posts %}
+    <h4 class="mb-4">Search results for "{{ query }}"</h4>
       <div class="row g-3">
         {% for post in blog_posts %}
           <div class="col-md-4">

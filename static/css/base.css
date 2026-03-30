@@ -103,7 +103,7 @@ a.dropdown-item:hover {
   border-color: #94a3b8;
   color: #0f172a;
 }
-.btn-signup {
+.btn-signup , .button-primary {
   background: #3b82f6;
   border: none;
   color: white;
@@ -118,7 +118,7 @@ a.dropdown-item:hover {
   align-items: center;
   gap: 6px;
 }
-.btn-signup:hover {
+.btn-signup:hover, .button-primary:hover {
   background: #2563eb;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
@@ -225,4 +225,8 @@ a.dropdown-item:hover {
   background: #3b82f6;
   color: #fff;
   box-shadow: 0 6px 14px rgba(59,130,246,0.18);
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+    border: none !important;
 }

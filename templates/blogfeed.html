@@ -16,7 +16,9 @@
       <button class="row-nav left-nav" aria-label="Scroll left">‹</button>
       <div id="categoryRow" class="category-row">
         {% for category in categories %}
-          <div class="category-item">{{ category.name }}</div>
+          <a href="{{ category.slug }}" class="text-decoration-none text-dark">
+            <div class="category-item">{{ category.name }}</div>
+          </a>
         {% endfor %}
       </div>
       <button class="row-nav right-nav" aria-label="Scroll right">›</button>
