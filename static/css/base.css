@@ -181,3 +181,48 @@ a.dropdown-item:hover {
     top: 9% !important;
     left: 10% !important;
 }
+
+/* About us description: full width on small devices, 60% width and centered on large (PC) */
+.aboutUs {
+  padding: 0.8rem 1rem;
+}
+.aboutUs p {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #475569;
+  line-height: 1.6;
+}
+@media (min-width: 992px) {
+  .aboutUs p {
+    width: 60%;
+  }
+}
+
+/* Social icons styling */
+.social-links {
+  margin-top: 0.6rem;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #3b82f6;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+.social-links a i {
+  font-size: 18px;
+  line-height: 1;
+}
+.social-links a:hover {
+  transform: translateY(-4px);
+  background: #3b82f6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(59,130,246,0.18);
+}

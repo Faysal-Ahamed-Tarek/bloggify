@@ -61,6 +61,8 @@ class BlogPost(models.Model) :
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "BlogPosts")
     tags = models.ManyToManyField(Tag, blank=True, related_name="BlogPosts")
 
+    related_blogs = models.ManyToManyField("self", blank = True, symmetrical=True, related_name="RelatedBlogs")
+
     views = models.PositiveIntegerField(default=0)
     is_feature = models.BooleanField(default=False)
 

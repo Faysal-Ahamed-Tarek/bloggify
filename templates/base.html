@@ -59,9 +59,9 @@
             <!-- Search + Login/Signup -->
             <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
               <!-- Search form (GET method, no action URL) -->
-              <form class="search-form d-flex" role="search" method="get" action="">
+              <form class="search-form d-flex" role="search" method="get" action="{% url "search" %}">
                 <div class="search-input-group d-flex align-items-center">
-                  <input class="search-input" type="search" name="q" placeholder="Search..." aria-label="Search" />
+                  <input class="search-input" type="search" name="keyword" placeholder="Search..." aria-label="Search" />
                   <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
                 </div>
               </form>
@@ -82,9 +82,19 @@
     {% endblock %}
 
     {% block footer %}
-      <footer class="py-4 mt-5 bg-white border-top">
-        <div class="container text-center text-secondary small">
-          <span>© 2026 DjangoBlog — Powered by Django & Bootstrap 5</span>
+      <footer class="py-4 mt-5 bg-white border-top text-center">
+        <a class="navbar-brand" href="{% url "home" %}"><i class="fab fa-python"></i> bloggify</a>
+        <div class="aboutUs text-center">
+          <p>{{ about_us.description }}</p>
+          <div class="social-links">
+            <a href="{{ social_links.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{ social_links.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="{{ social_links.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="{{ social_links.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="container text-center mt-3">
+          <span>{{ about_us.copyright }}</span>
         </div>
       </footer>
       <!-- Bootstrap JS Bundle (Popper included) -->
