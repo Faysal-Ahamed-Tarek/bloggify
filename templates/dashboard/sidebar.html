@@ -1,0 +1,8 @@
+<div class="col-12 col-md-2 p-0">
+  <div class="list-group dashboard-menu">
+    <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"><i class="fa-regular fa-chart-bar pe-2"></i> Dashboard</a>
+    <a href="#" class="list-group-item list-group-item-action"><i class="fa-regular fa-file-lines pe-2"></i> Blogs</a>
+    <a href="{% url 'categories' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'categories' %}active{% endif %}"><i class="fa-regular fa-object-ungroup pe-2"></i> categories</a>
+    <a href="#" class="list-group-item list-group-item-action"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i> log out</a>
+  </div>
+</div>

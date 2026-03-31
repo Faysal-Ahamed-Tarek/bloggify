@@ -3,9 +3,11 @@ from footer.models import aboutUs, socialLinks
 
 
 class aboutUsAdmin(admin.ModelAdmin) :
-    if aboutUs.objects.count() >= 1 : 
-        def has_add_permission(self, request) :
-            return False
+    def has_add_permission(self, request):
+        try:
+            return aboutUs.objects.count() < 1
+        except Exception:
+            return True
 
 
 class socialLinksAdmin(admin.ModelAdmin):

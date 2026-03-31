@@ -182,7 +182,7 @@ a.dropdown-item:hover {
     left: 10% !important;
 }
 
-/* About us description: full width on small devices, 60% width and centered on large (PC) */
+/* About us description */
 .aboutUs {
   padding: 0.8rem 1rem;
 }
@@ -229,4 +229,8 @@ a.dropdown-item:hover {
 
 .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
     border: none !important;
+}
+
+.list-group-item.active {
+    background-color: #3b82f6;
 }

@@ -85,7 +85,7 @@ def login(request):
             user = authenticate(request, username=user_name, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect("home")
+                return redirect("dashboard")
     else :     
         form = AuthenticationForm()
     print(request.user.is_authenticated)
