@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+
+from blog.models import Comments
     
 
 class registration(UserCreationForm):
@@ -28,3 +30,12 @@ class registration(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+
+class commentForm(forms.ModelForm) : 
+    content = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}), max_length=1000, required=True, help_text="Write your comment here.")
+
+    class Meta:
+        model = Comments
+        fields = ["content"]

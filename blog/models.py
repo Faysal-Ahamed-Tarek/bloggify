@@ -111,3 +111,18 @@ class ReadLaterBlog(models.Model) :
 
     def __str__(self) -> str :
         return f"{self.user.username} - {self.blog.title}"
+    
+
+
+class Comments(models.Model) : 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Comments")
+    blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name="Comments")
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta : 
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+
+    def __str__(self) -> str :
+        return f"{self.user.username} - {self.blog.title}"
