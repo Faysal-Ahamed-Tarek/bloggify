@@ -18,33 +18,34 @@
       <!-- Dashboard Content -->
       <div class="col-12 col-md-10">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2>Categories</h2>
-        <a href="{% url "add_category" %}" class="btn btn-signup"><i class="fa-regular fa-object-ungroup pe-2"></i> Add New Category</a>
+          <h2>Blogs</h2>
+          <a href="{% url 'add_blog' %}" class="btn btn-signup"><i class="fa-regular fa-file-lines pe-2"></i> Add New Blog</a>
         </div>
         <div class="row">
           <table class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Category Name</th>
-                <th scope="col">Created At</th>
+                <th scope="col">Blog</th>
+                <th scope="col">Category</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {% for category in categories %}
+              {% for item in blogs %}
                 <tr>
                   <td>{{ forloop.counter }}</td>
-                  <td>{{ category.name }}</td>
-                  <td>{{ category.created_at|date:"Y-m-d" }}</td>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.category.name }}</td>
                   <td>
-                    <a href="{% url "edit_category" category.slug %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                    <a href="{% url "delete_category" category.slug %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    <a href="{% url 'edit_blog' item.slug %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                    <a href="{% url 'delete_blog' item.slug %}" class="btn btn-sm btn-outline-danger">Delete</a>
                   </td>
                 </tr>
               {% endfor %}
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </div>
