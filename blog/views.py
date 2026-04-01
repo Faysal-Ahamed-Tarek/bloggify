@@ -1,7 +1,9 @@
+from django.contrib import messages
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from blog.forms import registration
-from blog.models import Category, BlogPost
+from blog.models import Category, BlogPost, ReadLaterBlog
 from django.db.models import Q
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login
@@ -67,7 +69,8 @@ def register(request):
         form = registration(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("register")
+            messages.success(request, "Registration successful. You can now log in.")
+            return redirect("login")
     else:
         form = registration()
     context = {"form": form}
@@ -85,6 +88,7 @@ def login(request):
             user = authenticate(request, username=user_name, password=password)
             if user is not None:
                 auth_login(request, user)
+                messages.success(request, "You have been logged in successfully.")
                 return redirect("dashboard")
     else :     
         form = AuthenticationForm()
@@ -96,3 +100,39 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect("login")
+
+
+def reading_list(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to be logged in to view your reading list.")
+        return redirect("login")
+    
+    blog = ReadLaterBlog.objects.select_related("blog", "blog__author").filter(user=request.user).order_by("-saved_at")
+    context = {
+        "blog": blog,
+    }
+    return render(request, "readingList.html", context)
+
+
+def add_to_reading_list(request, slug):
+    blog = get_object_or_404(BlogPost, slug=slug)
+    user = request.user
+
+    if not user.is_authenticated:
+        messages.error(request, "You need to be logged in to add to reading list.")
+        return redirect("login")
+    
+    if ReadLaterBlog.objects.filter(user=user, blog=blog).exists():
+        messages.info(request, "This blog is already in your reading list.")
+        return redirect("post_detail", username=blog.author.username, slug=blog.slug)
+    
+    ReadLaterBlog.objects.create(user=user, blog=blog)
+    messages.success(request, "Blog added to your reading list.")
+    return redirect("reading_list")
+
+
+def delete_from_reading_list(request, slug):
+    blog = get_object_or_404(ReadLaterBlog, blog__slug=slug, user=request.user)
+    blog.delete()
+    messages.success(request, "Blog removed from your reading list.")
+    return redirect("reading_list")

@@ -14,26 +14,23 @@
     <div class="row">
       <div class="col-12 col-md-8">
         <article>
-          <h1 class="fw-bold mb-5">{{ blog.title|title }}</h1>
+          <h1 class="fw-bold mb-3">{{ blog.title|title }}</h1>
           <!-- Desktop meta -->
           <div class="d-none d-md-flex border-bottom border-top mb-3 pb-2 pt-2 flex-wrap gap-4 align-items-center justify-content-between">
               <div class="d-flex gap-4">
-                  <span><i class="fa-regular fa-user me-2"></i> {{ blog.author.username }}</span>
+                  <span><i class="fa-regular fa-user me-2"></i> {{ blog.author.first_name }} {{ blog.author.last_name }}</span>
                   <span><i class="fa-regular fa-calendar me-2"></i> {{ blog.created_at|date:'F j, Y' }}</span>
                   <span><i class="fa-regular fa-clock me-2"></i> {{ blog.min_reading_time }} mins read</span>
-              <span><i class="fa-regular fa-eye me-2"></i> {{ blog.views }} views</span>
-              <span><i class="fa-regular fa-comment me-2"></i> 0 comments</span>
             </div>
             <div class="d-flex gap-4">
-              <span><i class="fa-regular fa-bookmark me-2"></i> read later</span>
-              <span><i class="fa-regular fa-share-from-square"></i> share</span>
+              <span><i class="fa-regular fa-share-from-square me-2"></i> share</span>
             </div>
           </div>
 
           <!-- Mobile meta -->
           <div class="d-flex d-md-none border-bottom mb-4 pb-2 pt-2 align-items-center justify-content-between">
             <div class="d-flex gap-3 align-items-center">
-              <span class="small"><i class="fa-regular fa-user"></i> &nbsp; {{ blog.author.username }}</span>
+              <span class="small"><i class="fa-regular fa-user"></i> &nbsp; {{ blog.author.first_name }} {{ blog.author.last_name }}</span>
               <span class="small text-muted"> <i class="fa-regular fa-calendar"></i> &nbsp; {{ blog.created_at|date:'F j, Y' }}</span>
             </div>
             <div class="dropdown">
@@ -44,12 +41,21 @@
                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-clock me-2"></i> {{ blog.min_reading_time }} mins read</a></li>
                 <li class="dropdown-item-text"><i class="fa-regular fa-eye me-2"></i> {{ blog.views }} views</li>
                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-comment me-2"></i> 0 comments</a></li>
-                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-bookmark me-2"></i> Read later</a></li>
+                <li><a class="dropdown-item" href="{% url 'add_to_reading_list' slug=blog.slug %}"><i class="fa-regular fa-bookmark me-2"></i> Read later</a></li>
                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-share-from-square me-2"></i> Share</a></li>
               </ul>
             </div>
           </div>
           <img src="/media/{{ blog.featured_image }}" alt="{{ blog.title }}" class="img-fluid rounded mb-3" />
+          <div class="d-none d-md-flex border-bottom border-top mb-3 pb-2 pt-2 flex-wrap gap-4 align-items-center justify-content-between">
+              <div class="d-flex gap-4">
+              <span><i class="fa-regular fa-eye me-2"></i> {{ blog.views }} views</span>
+              <span><i class="fa-regular fa-comment me-2"></i> 0 comments</span>
+            </div>
+            <div class="d-flex gap-4">
+                <a href="{% url 'add_to_reading_list' slug=blog.slug %}" class="text-decoration-none text-dark"><i class="fa-regular fa-bookmark"></i> &nbsp; Read later</a>
+            </div>
+          </div>
           <div class="mt-3">{{ blog.content|linebreaksbr }}</div>
         </article>
       </div>

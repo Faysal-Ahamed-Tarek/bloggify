@@ -52,7 +52,7 @@
                 <a class="nav-link {% if request.resolver_match.url_name == 'blog_feed' %}active{% endif %}" href="{% url 'blog_feed' %}">Blog Feed</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'reading-list' %}active{% endif %}" href="">Reading List</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'reading-list' %}active{% endif %}" href="{% url 'reading_list' %}">Reading List</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if request.resolver_match.url_name == 'pricing'%}active{% endif %}" href="">Pricing</a>

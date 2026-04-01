@@ -96,3 +96,18 @@ class BlogPost(models.Model) :
     
     def __str__(self) -> str :
         return self.title
+    
+
+
+class ReadLaterBlog(models.Model) : 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ReadLaterBlogs")
+    blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name="SavedByUsers")
+    saved_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta : 
+        verbose_name = "Read Later Blog"
+        verbose_name_plural = "Read Later Blogs"
+        unique_together = ("user", "blog")
+
+    def __str__(self) -> str :
+        return f"{self.user.username} - {self.blog.title}"

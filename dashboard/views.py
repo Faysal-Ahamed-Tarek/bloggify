@@ -51,7 +51,6 @@ def delete_category(request, slug):
     messages.success(request, "Category deleted successfully.")
     return redirect("categories")
 
-
 @login_required(login_url="login")
 def edit_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
@@ -70,13 +69,11 @@ def edit_category(request, slug):
     return render(request, "dashboard/editCategory.html", context)
 
 
-
 @login_required(login_url="login")
 def blog(request):
     blogs = BlogPost.objects.all()
     context = {"blogs": blogs}
     return render(request, "dashboard/blog.html", context)
-
 
 
 @login_required(login_url="login")
@@ -97,7 +94,7 @@ def add_blog(request):
     return render(request, "dashboard/addBlog.html", context)
 
 
-
+@login_required(login_url="login")
 def edit_blog(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug)
     if request.method == "POST":
@@ -114,9 +111,17 @@ def edit_blog(request, slug):
     context = {"form": form, "blog_post": blog_post}
     return render(request, "dashboard/editBlog.html", context)
 
-
+@login_required(login_url="login")
 def delete_blog(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug)
     blog_post.delete()
     messages.success(request, "Blog post deleted successfully.")
     return redirect("blog")
+
+@login_required(login_url="login")
+def users(request):
+    users = User.objects.all()
+    context = {
+        "users": users
+    }
+    return render(request, "dashboard/user.html", context)
