@@ -2,23 +2,34 @@ from django.contrib import messages
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from blog import models
 from blog.forms import commentForm, registration
 from blog.models import Category, BlogPost, Comments, ReadLaterBlog
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 def home(request):
     latest_posts = (
         BlogPost.objects.select_related("author", "category")
-        .all()
+        .filter(is_feature=False)
+        .annotate(comment_count= Count("Comments"))
         .order_by("-created_at")[:6]
     )
     
-    context = {"latest_posts": latest_posts}
+    recommended_blogs = (
+        BlogPost.objects.select_related("author", "category")
+        .filter(is_feature=True)
+        .annotate(comment_count= Count("Comments"))
+        .order_by("-created_at")[:3]
+    )
+
+    writter = User.objects.all()[:8]
+    context = {"latest_posts": latest_posts, "recommended_blogs": recommended_blogs, "writter": writter}
 
     return render(request, "bloggify.html", context)
 
@@ -38,7 +49,12 @@ def category(request, slug):
 
 
 def blog_feed(request):
-    posts = BlogPost.objects.select_related("author", "category").all().order_by("?")
+    if request.GET.get("category", False) :
+        slug = request.GET.get("category")
+        category = get_object_or_404(Category, slug=slug)
+        posts = BlogPost.objects.select_related("author", "category").filter(category=category).annotate(comment_count=Count("Comments")).all().order_by("-created_at")
+    else:
+        posts = BlogPost.objects.select_related("author", "category").annotate(comment_count=Count("Comments")).all().order_by("?")
     
     context = {
         "posts": posts,

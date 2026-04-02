@@ -11,19 +11,90 @@
 
 {% block content %}
   <main class="container">
-    <div class="hero-section mb-5">
-      <h1 class="display-5 fw-bold text-capitalize" style="color: #0f172a;">Human stories & ideas</h1>
-      <p class="lead text-secondary">A place to read, write, and deepen your understanding</p>
-      <a href="" class="btn btn-primary rounded-pill px-4 py-2 mt-2">Start Reading <i class="fas fa-arrow-right ms-1"></i></a>
+    <div class="hero-section mt-5 p-3 p-md-5 mb-5 row">
+      <div class="col-md-6 text-start">
+        <h1 class="display-5 fw-bold text-capitalize pt-2 pt-md-5" style="color: #0f172a;">Human stories & ideas</h1>
+        <p class="lead text-secondary">Bloggify is a modern blogging platform designed for curious minds. It's more than just a place to publish posts—it's a sanctuary for readers and writers alike.</p>
+        <a href="{% url 'blog_feed' %}" class="btn button-primary rounded-pill px-4 py-2 mt-2">Start Reading</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="{% static 'images/8849469.jpg' %}" alt="Hero Image" class="img-fluid" style="height: 60%" />
+      </div>
     </div>
+
 
     <div class="row g-3">
       <div class="col-12 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-3 mb-3">
           <i class="fa fa-bolt p-2 bg_main"></i>
-        <h2 class="mb-0">Latest Blogs</h2>
+          <h2 class="mb-0">writters</h2>
         </div>
-        <a href="{% url "blog_feed" %}" class="text-decoration-none button-primary">view all</a>
+
+      </div>
+      <div class="col-12 commentsContainer mt-4 row">
+          {% for item in writter %}
+            <div class="col-6 col-md-3 comment-item d-flex gap-3 mb-4">
+              <div class="comment-avatar">
+                <div class="avatar-placeholder">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+              </div>
+              <div class="comment-body flex-grow-1">
+                <div class="d-flex align-items-start justify-content-between">
+                  <div>
+                    <h6 class="mb-0 comment-author">{{ item.first_name }} {{ item.last_name }}</h6>
+                    joined in {{ item.date_joined|date:'F j, Y' }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% comment %} {% if not forloop.last %}
+              <vr class="comment-divider" />
+            {% endif %} {% endcomment %}
+          {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    <div class="row g-3 mt-2">
+      <div class="col-12 d-flex justify-content-between align-items-start">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <i class="fa fa-bolt p-2 bg_main"></i>
+          <h2 class="mb-0">Recommended Blogs</h2>
+        </div>
+        <a href="{% url 'blog_feed' %}" class="text-decoration-none button-primary">view all</a>
+      </div>
+      {% for post in recommended_blogs %}
+        <div class="col-md-4">
+          <div class="card card-blog p-2 position-relative">
+            <div class="card-body">
+              <div class="img_badge">
+                <span class="badge bg-white text-dark mb-2">{{ post.category.name }}</span>
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-fluid mb-3" style="height: 200px;" />
+              </div>
+              <h5 class="card-title fw-semibold">{{ post.title }}</h5>
+              <p class="card-text text-secondary">{{ post.excerpt|truncatechars:90 }}</p>
+              <div class="d-flex gap-4">
+                <span><i class="fa-regular fa-user"></i> {{ post.author.username }}</span>
+                <span><i class="fa-regular fa-eye"></i> {{ post.views }} views</span>
+                <span><i class="fa-regular fa-comment"></i> {{ post.comment_count }} {% if post.comment_count > 1 %}comments{% else %}comment{% endif %}</span>
+              </div>
+              <a href="{% url 'post_detail' post.author.username post.slug %}" class="stretched-link" aria-label="Read {{ post.title }}"></a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="row g-3 mt-5">
+      <div class="col-12 d-flex justify-content-between align-items-start">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <i class="fa fa-bolt p-2 bg_main"></i>
+          <h2 class="mb-0">Latest Blogs</h2>
+        </div>
+        <a href="{% url 'blog_feed' %}" class="text-decoration-none button-primary">view all</a>
       </div>
       {% for post in latest_posts %}
         <div class="col-md-4">
@@ -38,9 +109,9 @@
               <div class="d-flex gap-4">
                 <span><i class="fa-regular fa-user"></i> {{ post.author.username }}</span>
                 <span><i class="fa-regular fa-eye"></i> {{ post.views }} views</span>
-                <span><i class="fa-regular fa-comment"></i> 0 comments</span>
+                <span><i class="fa-regular fa-comment"></i> {{ post.comment_count }} {% if post.comment_count > 1 %}comments{% else %}comment{% endif %}</span>
               </div>
-              <a href="@{{ post.author.username }}/{{ post.slug }}" class="stretched-link" aria-label="Read {{ post.title }}"></a>
+              <a href="{% url 'post_detail' post.author.username post.slug %}" class="stretched-link" aria-label="Read {{ post.title }}"></a>
             </div>
           </div>
         </div>

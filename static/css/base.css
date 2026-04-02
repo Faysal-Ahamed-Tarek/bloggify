@@ -158,14 +158,6 @@ a.dropdown-item:hover {
   padding: 0 0.5rem;
 }
 
-.hero-section {
-  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
-  border-radius: 2rem;
-  padding: 3rem 2rem;
-  margin-top: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-}
 
 .text_main { 
   color :  #3b82f6 !important;

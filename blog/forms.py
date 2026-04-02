@@ -10,6 +10,11 @@ class registration(UserCreationForm):
     last_name = forms.CharField(max_length=30, required=True, help_text="Last name")
     email = forms.EmailField(max_length=254, required=True, help_text="Email address")
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs.pop("autofocus", None)
+        self.fields["first_name"].widget.attrs["autofocus"] = True
+
     class Meta:
         model = User
         fields = ["username", "first_name", "last_name", "email", "password1", "password2"]

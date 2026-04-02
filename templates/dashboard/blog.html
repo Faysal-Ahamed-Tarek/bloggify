@@ -42,10 +42,14 @@
                     <a href="{% url 'delete_blog' item.slug %}" class="btn btn-sm btn-outline-danger">Delete</a>
                   </td>
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+                {%empty%}
+                  <tr>
+                    <td colspan="4" class="text-center">No blogs found.</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
