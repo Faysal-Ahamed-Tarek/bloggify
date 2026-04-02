@@ -10,8 +10,6 @@ env/
 ENV/
 
 # Django database
-db.sqlite3
-db.sqlite3-journal
 
 # Django/local settings and logs
 local_settings.py
