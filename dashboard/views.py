@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 from blog.models import BlogPost, Category
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from dashboard.forms import BlogPostForm, categoryForm
-
+from dashboard.forms import BlogPostForm, categoryForm, aboutUsForm
+from footer.models import aboutUs, socialLinks
+from dashboard.forms import socialLinksForm
 
 
 # Create your views here.
@@ -71,7 +72,7 @@ def edit_category(request, slug):
 
 @login_required(login_url="login")
 def blog(request):
-    blogs = BlogPost.objects.all()
+    blogs = BlogPost.objects.filter(author=request.user).order_by("-created_at")
     context = {"blogs": blogs}
     return render(request, "dashboard/blog.html", context)
 
@@ -125,3 +126,50 @@ def users(request):
         "users": users
     }
     return render(request, "dashboard/user.html", context)
+
+
+@login_required(login_url="login")
+def footer(request):
+    aboutus = aboutUs.objects.first()
+    sociallinks = socialLinks.objects.first()
+    context = {
+        "aboutus": aboutus,
+        "sociallinks": sociallinks,
+    }
+    return render(request, "dashboard/footer.html", context)
+
+
+@login_required(login_url="login")
+def edit_about_us(request):
+    aboutus = aboutUs.objects.first()
+    if request.method == "POST":
+        form = aboutUsForm(request.POST, instance=aboutus)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "About Us updated successfully.")
+            return redirect("footer")
+        else:
+            messages.error(request, "Please fix the errors below.")
+    else:
+        form = aboutUsForm(instance=aboutus)
+
+    context = {"form": form, "aboutus": aboutus}
+    return render(request, "dashboard/editAbout.html", context)
+
+
+@login_required(login_url="login")
+def edit_social_links(request):
+    sociallinks = socialLinks.objects.first()
+    if request.method == "POST":
+        form = socialLinksForm(request.POST, instance=sociallinks)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Social Links updated successfully.")
+            return redirect("footer")
+        else:
+            messages.error(request, "Please fix the errors below.")
+    else:
+        form = socialLinksForm(instance=sociallinks)
+
+    context = {"form": form, "sociallinks": sociallinks}
+    return render(request, "dashboard/editSocial.html", context)

@@ -6,6 +6,9 @@
     {% endif %}
     <a href="{% url 'blog' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><i class="fa-regular fa-file-lines pe-2"></i> Blogs</a>
     <a href="{% url 'categories' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'categories' %}active{% endif %}"><i class="fa-regular fa-object-ungroup pe-2"></i> categories</a>
+    {% if request.user.is_superuser %}
+      <a href="{% url 'footer' %}" class="list-group-item list-group-item-action {% if request.resolver_match.url_name == 'footer' %}active{% endif %}"><i class="fa-solid fa-hashtag pe-2"></i>footer</a>
+    {% endif %}
     <a href="{% url 'logout' %}" class="list-group-item list-group-item-action"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i> log out</a>
   </div>
 </div>
