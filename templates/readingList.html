@@ -26,13 +26,17 @@
               {% for item in blog %}
                 <tr>
                   <td>{{ forloop.counter }}</td>
-                  <td>{{ item.blog.title }}</td>
+                  <td><a href="{% url 'post_detail' username=item.blog.author.username slug=item.blog.slug %}" class="text-decoration-none text-dark">{{ item.blog.title }}</a></td>
                   <td>{{ item.saved_at }}</td>
                   <td>
                     <a href="{% url "delete_from_reading_list" slug=item.blog.slug %}" class="btn btn-sm btn-outline-danger">Delete</a>
                   </td>
                 </tr>
-              {% endfor %}
+                {% empty %}
+                  <tr>
+                    <td colspan="4" class="text-center">Your reading list is empty.</td>
+                  </tr>
+                {% endfor %}
             </tbody>
           </table>
         </div>

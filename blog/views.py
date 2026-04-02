@@ -17,6 +17,7 @@ def home(request):
         .all()
         .order_by("-created_at")[:6]
     )
+    
     context = {"latest_posts": latest_posts}
 
     return render(request, "bloggify.html", context)
@@ -38,6 +39,7 @@ def category(request, slug):
 
 def blog_feed(request):
     posts = BlogPost.objects.select_related("author", "category").all().order_by("?")
+    
     context = {
         "posts": posts,
     }
@@ -60,6 +62,8 @@ def blog_details(request, username, slug):
             messages.error(request, "There was an error with your comment. Please try again.")
     else:
         form = commentForm()
+        
+    blog.viewsCounter(request)
     context = {"blog": blog, "related_blogs": blog.related_blogs.all(), "form": form, "comments": comments}
     return render(request, "blogDetail.html", context)
 

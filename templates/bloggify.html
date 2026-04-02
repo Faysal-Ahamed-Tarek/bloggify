@@ -23,7 +23,7 @@
           <i class="fa fa-bolt p-2 bg_main"></i>
         <h2 class="mb-0">Latest Blogs</h2>
         </div>
-        <a href="">view all</a>
+        <a href="{% url "blog_feed" %}" class="text-decoration-none button-primary">view all</a>
       </div>
       {% for post in latest_posts %}
         <div class="col-md-4">
