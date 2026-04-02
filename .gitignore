@@ -18,8 +18,7 @@ local_settings.py
 *.log
 
 # Static/media uploads (if used)
-/media/
-media/
+
 
 # Editor/OS files
 .vscode/
