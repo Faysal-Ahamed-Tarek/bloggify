@@ -1,41 +1,33 @@
-# Python bytecode
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
 
-# Virtual environments
+# Django
+db.sqlite3
+media/
+staticfiles/
+*.log
+
+# Environment
+.env
 venv/
-.venv/
 env/
 ENV/
 
-# Django database
-
-# Django/local settings and logs
-local_settings.py
-*.log
-
-# Static/media uploads (if used)
-
-
-# Editor/OS files
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 Thumbs.db
-
-# Test / coverage
-.pytest_cache/
-.tox/
-.coverage
-htmlcov/
-
-# Build / packaging
-build/
-dist/
-*.egg-info/
-
-# Other
-*.egg
-pip-log.txt
-# PyInstaller
