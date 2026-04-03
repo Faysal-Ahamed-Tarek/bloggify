@@ -1,0 +1,66 @@
+.hero-section {
+  background-color: white;
+  height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    height: 500px;
+  }
+  .hero-section img {
+    height: auto !important;
+      max-width: 70%;
+  }
+}
+
+.card-blog {
+  border: none;
+  border-radius: 1.2rem;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  background: white;
+}
+.card-blog:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+}
+footer {
+  margin-top: 4rem;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+
+.nav-link[href=""] {
+  cursor: pointer;
+}
+
+
+.comment-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.comment-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.comment-text {
+    word-wrap: break-word;
+}
+
+.comment-avatar .avatar-placeholder {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #3b82f6;
+    background: #f1f5f9;
+}
+
+hr {
+    opacity: 0.10 !important;
+}

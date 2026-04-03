@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap");
+
+body {
+  font-family: "Maven Pro", sans-serif !important;
+  background: #f8fafc;
+  padding-top: 80px;
+}
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.3px;
+  color: #0f172a !important;
+}
+.navbar-brand i {
+  color: #3b82f6;
+  margin-right: 6px;
+}
+.nav-link {
+  font-weight: 500;
+  color: #334155 !important;
+  margin: 0 0.25rem;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.nav-link:hover {
+  color: #3b82f6 !important;
+}
+
+.nav-link.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+.search-form {
+  margin-right: 0.75rem;
+}
+.search-input-group {
+  background: #f1f5f9;
+  border-radius: 60px;
+  overflow: hidden;
+  transition: all 0.2s;
+  border: 1px solid #e2e8f0;
+}
+
+@media (min-width: 992px) {
+  .navbar-nav .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+a.dropdown-item:hover {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.search-input-group:focus-within {
+  background: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+.search-input {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  width: 180px;
+  outline: none;
+}
+.search-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  padding: 0 1rem;
+  transition: color 0.2s;
+}
+.search-btn:hover {
+  color: #3b82f6;
+}
+
+.btn-login {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 0.35rem 1.2rem;
+  transition: all 0.2s;
+  margin-right: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-login:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+.btn-signup , .button-primary {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 0.35rem 1.3rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-signup:hover, .button-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+.navbar-toggler {
+  border: none;
+  color: #0f172a;
+  font-size: 1.5rem;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 991.98px) {
+  .search-input-group {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .search-input {
+    width: 100%;
+  }
+  .navbar-nav {
+    margin: 0.5rem 0;
+  }
+  .d-flex-buttons {
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+  }
+  body {
+    padding-top: 70px;
+  }
+}
+
+.nav-custom-container {
+  padding: 0 0.5rem;
+}
+
+
+.text_main { 
+  color :  #3b82f6 !important;
+}
+
+.bg_main {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.img_badge span {
+    position: absolute;
+    top: 9% !important;
+    left: 10% !important;
+}
+
+/* About us description */
+.aboutUs {
+  padding: 0.8rem 1rem;
+}
+.aboutUs p {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #475569;
+  line-height: 1.6;
+}
+@media (min-width: 992px) {
+  .aboutUs p {
+    width: 60%;
+  }
+}
+
+/* Social icons styling */
+.social-links {
+  margin-top: 0.6rem;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #3b82f6;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+.social-links a i {
+  font-size: 18px;
+  line-height: 1;
+}
+.social-links a:hover {
+  transform: translateY(-4px);
+  background: #3b82f6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(59,130,246,0.18);
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+    border: none !important;
+}
+
+.list-group-item.active {
+    background-color: #3b82f6;
+}
